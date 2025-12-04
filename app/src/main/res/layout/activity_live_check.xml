@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_live_check_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- 播放容器（本地视频） -->
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        app:use_controller="true"
+        app:show_buffering="when_playing" />
+
+    <!-- 检测状态 -->
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="状态：等待检测"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <!-- 字幕：高亮显示脏话 -->
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="当前字幕会显示在这里"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- 统计结果：总次数+词汇 -->
+    <TextView
+        android:id="@+id/tv_profanity_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="脏话统计：暂无"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="14sp" />
+
+    <!-- 简单情绪识别展示 -->
+    <TextView
+        android:id="@+id/tv_emotion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="推测情绪：暂无"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="14sp" />
+
+    <!-- 触发检测的按钮 -->
+    <Button
+        android:id="@+id/btn_detect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="开始检测口播脏话" />
+</LinearLayout>
