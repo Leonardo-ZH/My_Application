@@ -8,8 +8,8 @@
 
 | 作业 | 功能说明 | 使用技术 |
 |------|------|------|
-| 作业一 🎬 Feed 视频瀑布流展示 + 播放 | 双列视频瀑布流、点击进入播放页 | Retrofit2、RecyclerView、Glide、ExoPlayer |
-| 作业二 🗣 多模态口播脏话 + 情绪检测 | 本地直播视频播放、文本&声音结合情绪分析 | ExoPlayer、Visualizer、Spannable、高亮敏感词 |
+| 作业一 Feed 视频瀑布流展示 + 播放 | 双列视频瀑布流、点击进入播放页 | Retrofit2、RecyclerView、Glide、ExoPlayer |
+| 作业二 多模态口播脏话 + 情绪检测 | 本地直播视频播放、文本&声音结合情绪分析 | ExoPlayer、Visualizer、Spannable、高亮敏感词 |
 
 ---
 
@@ -27,21 +27,33 @@
 
 ## 项目结构
 com.leonardo.myapplication
-├── ui
-│   ├── feed            # 作业一：推荐流 UI
-│   │   ├── FeedActivity
-│   │   ├── FeedAdapter
-│   │   └── VideoViewHolder
-│   ├── player          # 视频播放页面
-│   │   └── PlayerActivity
-│   └── livecheck       # 作业二：口播检测模块
-│       └── LiveCheckActivity (Multi-modal)
+├── MainActivity.java                  # 启动页面
+├── AndroidManifest.xml                # 权限、Activity 声明
 ├── data
-│   ├── model           # VideoItem Bean
-│   ├── api             # Retrofit 网络请求
-│   └── profanity       # 脏话检测与高亮逻辑
-├── res
-│   ├── layout          # UI 布局文件
-│   ├── drawable
-│   └── raw             # 本地 mp4 视频
-└── AndroidManifest.xml
+│   ├── api
+│   │   └── ApiService.java            # Retrofit 接口
+│   ├── model
+│   │   └── VideoItem.java             # 视频数据模型
+│   └── profanity
+│       ├── ProfanityDetector.java     # 脏话检测核心逻辑
+│       ├── ProfanityHighlighter.java  # 敏感词高亮显示
+│       └── ProfanityResult.java       # 检测结果封装
+├── ui
+│   ├── feed
+│   │   ├── FeedActivity.java          # 作业一推荐流页面
+│   │   ├── FeedAdapter.java           # 卡片 Adapter
+│   │   └── VideoViewHolder.java       # 视频卡片布局绑定
+│   ├── player
+│   │   └── PlayerActivity.java        # 视频播放页面 (ExoPlayer)
+│   └── livecheck
+│       └── LiveCheckActivity.java     # 作业二多模态分析页面
+└── res
+    ├── layout                         # XML UI 布局文件
+    │   ├── activity_feed.xml
+    │   ├── item_video.xml
+    │   ├── activity_player.xml
+    │   └── activity_live_check.xml
+    ├── drawable                       # 图标、背景资源
+    ├── mipmap                         # 应用图标
+    └── raw
+        └── live_clip.mp4              # 本地测试视频(中英口播)
